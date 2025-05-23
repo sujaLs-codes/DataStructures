@@ -76,6 +76,23 @@ public class Link2 {
         size--;
         return val;
     }
+    public int deleteLast(){
+        if(size <= 1){
+            return deleteFirst();
+        }
+        Node secondlast = get(size -2);
+        int val = tail.data;
+        tail = secondlast;
+        tail.next = null;
+        return val;
+    }
+    public Node get(int index){
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
     public void printList(Node head){
         while (head != null){
             System.out.print("|" + head.data + "| -> ");
@@ -97,6 +114,8 @@ public class Link2 {
         //Insert 16 at 4th position...
         list.printList(list.head);
         System.out.println(list.deleteFirst());
+        list.printList(list.head);
+        System.out.println(list.deleteLast());
         list.printList(list.head);
     }
 }
